@@ -57,4 +57,8 @@ class AnswerTest < ActiveSupport::TestCase
       answer.update(chosen: true)
     end
   end
+
+  test "should have many comments" do
+    check_presence(answer, :comment)
+  end
 end
