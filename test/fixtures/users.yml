@@ -6,6 +6,7 @@ one:
   email: one@example.org
   password_digest: MyString
 
+
 two:
   name: User Two
   score: 1

@@ -20,5 +20,11 @@ class VoteTest < ActiveSupport::TestCase
     assert_not_empty @vote.errors[:value]
   end
 
-  test ""
+  test "should add 10 points to question or answer user" do
+    question = questions(:one)
+    previous_score = question.user.score
+    question.votes.create(value:1)
+    puts "question score #{question.user.score}"
+    assert_equal 10, question.user.score - previous_score
+  end
 end
