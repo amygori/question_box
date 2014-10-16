@@ -1,10 +1,12 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
+  has_many :comments, as: :commentable
 
   validates :text, presence: true
   validates :user, presence: true
   validates :question, presence: true
+  validates :comments, presence: true
 
   validate :check_one_chosen_answer_per_question
 

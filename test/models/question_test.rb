@@ -25,6 +25,10 @@ class QuestionTest < ActiveSupport::TestCase
     question.answers.first.update(chosen: true)
     assert question.has_chosen_answer?, "has_chosen_answer? should be true"
   end
+
+  test "should have many comments" do
+    check_presence(@question, :comments)
+  end
 end
 
 
