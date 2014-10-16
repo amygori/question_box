@@ -9,4 +9,8 @@ class CommentTest < ActiveSupport::TestCase
     check_presence(@comment, :user)
   end
 
+  test "should belong to a 'commentable'" do
+    check_presence(@comment, :commentable)
+  end
+
 end

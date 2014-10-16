@@ -46,4 +46,12 @@ class UserTest < ActiveSupport::TestCase
     assert @user.invalid?, "User should have a positive score"
     assert_not_empty @user.errors[:score]
   end
+
+  test "should have many comments" do
+    check_presence(@user, :comments)
+  end
+
+  test "should have many votes" do
+    check_presence(@user, :votes)
+  end
 end
