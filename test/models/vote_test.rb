@@ -6,7 +6,7 @@ class VoteTest < ActiveSupport::TestCase
     @vote = Vote.new
   end
 
-  test "should have a user" do
+  test "should belong to a user" do
     check_presence(@vote, :user)
   end
 
@@ -19,4 +19,6 @@ class VoteTest < ActiveSupport::TestCase
     assert @vote.invalid?, "vote should be positive or negative"
     assert_not_empty @vote.errors[:value]
   end
+
+  test ""
 end
