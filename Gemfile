@@ -38,13 +38,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
 gem "quiet_assets", group: :development
+
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "faker"
   gem "pry-rails"
+  gem "shoulda"
 end
 
 group :test do

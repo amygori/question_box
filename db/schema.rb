@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141016022923) do
+=======
+ActiveRecord::Schema.define(version: 20141016173750) do
+>>>>>>> upstream/master
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -44,9 +48,18 @@ ActiveRecord::Schema.define(version: 20141016022923) do
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
+  create_table "questions_tags", id: false, force: true do |t|
+    t.integer "question_id", null: false
+    t.integer "tag_id",      null: false
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "score"
+    t.integer  "score",           default: 1
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
@@ -54,12 +67,22 @@ ActiveRecord::Schema.define(version: 20141016022923) do
   end
 
   create_table "votes", force: true do |t|
+<<<<<<< HEAD
     t.integer  "value"
     t.integer  "user_id"
+=======
+    t.integer  "user_id"
+    t.integer  "value"
+    t.integer  "voteable_id"
+    t.string   "voteable_type"
+>>>>>>> upstream/master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
+=======
+>>>>>>> upstream/master
 end

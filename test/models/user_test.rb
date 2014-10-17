@@ -1,25 +1,22 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  def check_bad_email(user, email)
-    user.email = email
-    assert user.invalid?, "User with bad email should not be valid"
-    assert_not_empty user.errors[:email]
-  end
+  subject { users(:one) }
 
-  setup do
-    @user = User.new
-  end
+  should validate_presence_of(:name)
+  should validate_presence_of(:email)
+  should validate_uniqueness_of(:email).case_insensitive
+  should validate_presence_of(:score)
+  should validate_numericality_of(:score)
+         .only_integer
+         .is_greater_than_or_equal_to(0)
 
-  test "should have an email" do
-    check_presence(@user, :email)
-  end
+  should_not allow_value("BAD EMAIL").for(:email)
+  should_not allow_value("@").for(:email)
+  should_not allow_value("  clinton@example.org").for(:email)
 
-  test "should have a case-insensitive unique email" do
-    @user.email = users(:one).email.upcase
-    assert @user.invalid?, "Email address should be unique"
-    assert_not_empty @user.errors[:email]
-  end
+  should have_secure_password
+
 
   test "should have a valid formatted email" do
     check_bad_email(@user, "BAD_EMAIL")
@@ -54,4 +51,9 @@ class UserTest < ActiveSupport::TestCase
   test "should have many votes" do
     check_presence(@user, :votes)
   end
+
+  should have_many(:questions)
+  should have_many(:answers)
+  should have_many(:votes)
+
 end
