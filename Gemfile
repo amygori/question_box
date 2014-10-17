@@ -46,3 +46,7 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
 end
+
+group :test do
+  gem 'shoulda'
+end
