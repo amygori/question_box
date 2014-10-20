@@ -3,7 +3,7 @@
 one:
   title: MyString
   text: MyText
-  user: one
+  user: chet
 
 two:
   title: MyString

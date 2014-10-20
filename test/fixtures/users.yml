@@ -6,7 +6,6 @@ one:
   email: one@example.org
   password_digest: <%= password_digest %>
 
-
 two:
   name: User Two
   score: 50

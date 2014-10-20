@@ -68,7 +68,7 @@ end
         receiver = question.user
 
         assert_difference "receiver.score", 10 do
-          question.votes.create!(:value => 1, :user => @voter)
+          question.votes.create!(value: 1, user: @voter)
           receiver.reload
         end
       end
@@ -78,7 +78,7 @@ end
         receiver = answer.user
 
         assert_difference "receiver.score", 10 do
-          answer.votes.create!(:value => 1, :user => @voter)
+          answer.votes.create!(value: 1, user: @voter)
           receiver.reload
         end
       end
@@ -90,7 +90,7 @@ end
         receiver = question.user
 
         assert_difference "receiver.score", -5 do
-          question.votes.create!(:value => -1, :user => @voter)
+          question.votes.create!(value: -1, user: @voter)
           receiver.reload
         end
       end
@@ -101,7 +101,7 @@ end
         receiver.update(score: 10)
 
         assert_difference "receiver.score", -5 do
-          answer.votes.create!(:value => -1, :user => @voter)
+          answer.votes.create!(value: -1, user: @voter)
           receiver.reload
         end
       end
@@ -111,7 +111,7 @@ end
         receiver = answer.user
         receiver.update(score: 2)
 
-        answer.votes.create!(:value => -1, :user => @voter)
+        answer.votes.create!(value: -1, user: @voter)
         answer.user.reload
 
         assert_equal 0, receiver.score
@@ -121,7 +121,7 @@ end
         question = questions(:one)
 
         assert_difference "@voter.score", -1 do
-          question.votes.create!(:value => -1, :user => @voter)
+          question.votes.create!(value: -1, user: @voter)
         end
       end
     end

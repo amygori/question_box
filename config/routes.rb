@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root 'questions#home'
 
+
   resources :users, :only => [:new, :create]
+  resources :questions, :only => [:index, :new, :create, :show] do
+    post :vote, on: :member
+    resources :answers, :only => [:create]
+  end
+  resources :answers, :only => [] do
+    post :vote, on: :member
+  end
 
   resource :login, :only => [:new, :create, :destroy]
   resources :questions, :only => [:index, :new, :create, :show ] do
