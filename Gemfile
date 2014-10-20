@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "foundation-rails"
 gem "simple_form"
+gem "kaminari"
 
 group :development, :test do
   gem "better_errors"
@@ -26,6 +27,7 @@ group :development, :test do
   gem "rails_best_practices"
   gem "rubocop"
   gem "shoulda"
+  gem "selenium-webdriver"
 end
 
 

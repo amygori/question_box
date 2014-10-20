@@ -34,8 +34,8 @@ class ActionController::TestCase
 end
 
 class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
 end
 
 ActiveRecord::FixtureSet.context_class.send :include, TestPasswordHelper
+
