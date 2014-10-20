@@ -43,13 +43,7 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
   context "logout" do
     context "when logged in" do
       setup do
-        @email = users(:one).email
-        @password = default_password
-
-        visit login_path
-        fill_in "Email", with: users(:one).email
-        fill_in "Password", with: default_password
-        click_button "Login"
+        login
       end
 
       should "be able to log out" do

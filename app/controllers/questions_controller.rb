@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc).page params[:page]
   end
 
   def new
@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
 
     if @question.save
-      redirect_to @question
+      redirect_to @question, success: "Your question has been created."
     else
       render :new
     end

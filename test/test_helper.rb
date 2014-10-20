@@ -9,6 +9,7 @@ require 'shoulda'
 require 'capybara/rails'
 require_relative 'support/test_password_helper'
 
+Capybara.default_driver = :selenium
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
@@ -35,6 +36,13 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
+
+  def login(user = users(:one), password = default_password)
+    visit login_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: password
+    click_button "Login"
+  end
 end
 
 ActiveRecord::FixtureSet.context_class.send :include, TestPasswordHelper

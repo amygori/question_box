@@ -26,8 +26,14 @@ group :development, :test do
   gem "quiet_assets"
   gem "rails_best_practices"
   gem "rubocop"
-  gem "shoulda"
   gem "selenium-webdriver"
+  gem "shoulda"
+
+  # Guard
+  gem 'guard'
+  gem 'guard-rake'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
+
 end
 
 

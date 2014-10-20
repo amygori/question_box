@@ -1,6 +1,10 @@
-<% @questions.each do | question | %>
-    <div>
-      <h2> <% question.title %> </h2>
-        <div> <% question.text %></div>
-    </div>
- <% end %>
+
+<% @questions.each do |question| %>
+  <div>
+    <h2><%= question.title %></h2>
+    <div><%= question.text %></div>
+  </div>
+<% end %>
+
+<%= paginate @questions %>
+
