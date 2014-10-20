@@ -4,24 +4,24 @@ one:
   name: User One
   score: 15
   email: one@example.org
-  password_digest: MyString
+  password_digest: <%= password_digest %>
 
 
 two:
   name: User Two
   score: 50
   email: two@example.org
-  password_digest: MyString
+  password_digest: <%= password_digest %>
 
 chet:
   name: Chet Corey
   score: 1000
   email: chet@example.org
-  password_digest: whoooo
+  password_digest: <%= password_digest %>
 
 voter:
   name: Voter Person
   score: 1000
   email: voter@example.org
-  password_digest: whoooo
+  password_digest: <%= password_digest %>
 

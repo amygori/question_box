@@ -18,6 +18,10 @@ class UserTest < ActiveSupport::TestCase
   should have_secure_password
 
 
+  setup do
+    @user = User.new
+  end
+
   test "should have a valid formatted email" do
     check_bad_email(@user, "BAD_EMAIL")
     check_bad_email(@user, "@")

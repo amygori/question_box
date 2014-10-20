@@ -70,5 +70,5 @@ class AnswerTest < ActiveSupport::TestCase
     check_presence(@answer, :comments)
   end
 
-
+end
 

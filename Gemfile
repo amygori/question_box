@@ -48,6 +48,3 @@ group :development, :test do
   gem "shoulda"
 end
 
-group :test do
-  gem 'shoulda'
-end

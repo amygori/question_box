@@ -25,6 +25,9 @@ class UsersControllerTest < ActionController::TestCase
       setup { post :create, { user: invalid_user_attributes } }
 
       should "re-render the form" do
+        #the following test actually only tells you whether there is actually a response from the server
+        #assert_response :ok #this is the rails server response for success
+        #INSTEAD test whether content renders from the form: testing templates and layouts
         assert_template :new
       end
 
