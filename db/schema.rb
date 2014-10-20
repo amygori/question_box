@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20141016173750) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -72,6 +72,6 @@ ActiveRecord::Schema.define(version: 20141016173750) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end
