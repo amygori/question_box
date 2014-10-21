@@ -1,0 +1,8 @@
+<h1>Login</h1>
+
+
+<%= simple_form_for @user do |f| %>
+    <%= f.input :email, label: false, placeholder: "email" %>
+    <%= f.input :password, label: false, placeholder: "password" %>
+    <%= f.button :submit %>
+<% end %>

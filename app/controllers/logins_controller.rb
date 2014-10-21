@@ -1,16 +1,21 @@
 class LoginsController < ApplicationController
-  def show
-    @login = Login.new
-  end
+ def index
+   @login = Login.new
+ end
+
+ def new
+   @user = User.new
+ end
 
   def create
-    @login = Login.new(login_params)
+    @user = User.find_by(email: params[:email])
 
-    if @login.valid? && @login.authenticated?
-      session[:current_user_id] = @login.user.id
-      redirect_to root_path, success: "You are successfully logged in."
+    if @user && @user.authenticate(params[:password])
+      session[:current_user_id] = @user.id
+      redirect_to root_path, notice: "You have successfully logged in."
     else
-      render :show
+      flash.now[:error] = "Your email or password was incorrect."
+      render :new
     end
   end
 
@@ -25,3 +30,4 @@ class LoginsController < ApplicationController
     params.require(:login).permit(:email, :password)
   end
 end
+
