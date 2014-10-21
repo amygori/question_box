@@ -3,10 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create]
 
-  resource :login, :only => [:new, :create, :destroy]
+  resource :login, :only => [:new, :create, :destroy, :show]
 
   resources :questions, :only => [:index, :new, :create, :show] do
-
     post :vote, on: :member
     resources :answers, :only => [:create], :shallow => true do
       post :vote, on: :member
