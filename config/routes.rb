@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'questions#home'
 
-  resources :users, :only => [:new, :create]
+ # resources :users, :only => [:new, :create]
+  resources :users
 
   resource :login, :only => [:new, :create, :destroy, :show]
 
