@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
+
 gem 'rails', '4.1.6'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -15,6 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "foundation-rails"
 gem "simple_form"
 gem "kaminari"
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 group :development, :test do
   gem "better_errors"
@@ -31,10 +35,7 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "shoulda"
 
-  # Guard
-  gem 'guard'
-  gem 'guard-rake'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  
 
 end
 
