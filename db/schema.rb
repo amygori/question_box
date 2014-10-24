@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016173750) do
+ActiveRecord::Schema.define(version: 20141021153210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,30 @@ ActiveRecord::Schema.define(version: 20141016173750) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
+<<<<<<< HEAD
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.text     "text"
+=======
+  create_table "logins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "password_resets", force: true do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.boolean  "expired",    default: false
+>>>>>>> upstream/master
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+<<<<<<< HEAD
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+=======
+  add_index "password_resets", ["user_id"], name: "index_password_resets_on_user_id", using: :btree
+>>>>>>> upstream/master
 
   create_table "questions", force: true do |t|
     t.string   "title"

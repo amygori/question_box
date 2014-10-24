@@ -11,19 +11,24 @@ class QuestionsTest < ActionDispatch::IntegrationTest
       assert page.has_content?(question.text)
     end
 
-    should "be able to create a question" do
-      title = "How do I?"
-      text = "I don't even know"
+    context "when logged in" do
+      setup do
+        login
+      end
 
-      login
-      visit root_path
-      fill_in "question_title", with: title
-      fill_in "question_text", with: text
-      click_on "Ask"
+      should "be able to create a question" do
+        title = "How do I?"
+        text = "I don't even know"
 
-      assert page.has_content?("question has been created")
-      assert page.has_content?(title)
-      assert page.has_content?(text)
+        visit root_path
+        fill_in "question_title", with: title
+        fill_in "question_text", with: text
+        click_on "Ask"
+
+        assert page.has_content?("question has been created")
+        assert page.has_content?(title)
+        assert page.has_content?(text)
+      end
     end
   end
 end

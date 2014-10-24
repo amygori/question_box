@@ -1,7 +1,34 @@
 
-<h1>What's Your Question?</h1>
-<%= simple_form_for @question do |f| %>
-  <%= f.input :title, label: false, placeholder: 'title' %>
-  <%= f.input :text, label: false, placeholder: 'text' %>
-  <%= f.button :submit, "Ask" %>
-<% end %>
+
+
+<div class="panel radius">
+  <div class="row">
+    <div class="large-10 large-offset-1 columns">
+      <% if logged_in? %>
+        <h3 class="text-center">What's your question?</h2>
+          <%= simple_form_for @question do |f| %>
+            <%= f.input :title, label: false, placeholder: "How do I ... ?" %>
+            <%= f.input :text, label: false, placeholder: "Your question text" %>
+            <div class="text-center">
+              <%= f.button :submit, "Ask", :class => "radius" %>
+            </div>
+
+          <% end %>
+      <% else %>
+        <h3 class="text-center"><%= link_to "Log in to ask a question.", login_path %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Unanswered questions</h4>
+    <%= render @unanswered_questions %>
+  </div>
+  <div class="large-6 columns">
+    <h4>Recently answered questions</h4>
+    <%= render @answered_questions %>
+  </div>
+</div>
+

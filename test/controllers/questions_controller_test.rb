@@ -21,8 +21,12 @@ class QuestionsControllerTest < ActionController::TestCase
       assert assigns[:question], "Should have a question"
     end
 
-    should "load most recent questions" do
-      assert assigns[:recent_questions], "Should load recent questions"
+    should "load unanswered questions" do
+      assert assigns[:unanswered_questions], "Should load unanswered questions"
+    end
+
+    should "load recently answered questions" do
+      assert assigns[:answered_questions], "Should load recently answered questions"
     end
   end
 

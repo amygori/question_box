@@ -11,3 +11,15 @@ two_for_question_one:
   user: chet
   question: one
   chosen: false
+
+answer_one:
+  text: MyText
+  user: two
+  question: answered
+  chosen: false
+
+answer_two:
+  text: MyText
+  user: chet
+  question: answered
+  chosen: false

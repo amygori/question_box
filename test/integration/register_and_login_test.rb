@@ -26,16 +26,20 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
     end
   end
 
+  def assert_can_login(user, password)
+    visit login_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: password
+    click_button "Login"
+
+    assert_equal root_path, current_path
+    assert page.has_content?("Logged in as #{user.name}")
+  end
+
   context "login" do
     context "with a valid email and password" do
       should "be able to login" do
-        visit login_path
-        fill_in "Email", with: users(:one).email
-        fill_in "Password", with: default_password
-        click_button "Login"
-
-        assert_equal root_path, current_path
-        assert page.has_content?("Logged in as #{users(:one).name}")
+        assert_can_login(users(:one), default_password)
       end
     end
   end
@@ -52,6 +56,35 @@ class RegisterAndLoginTest < ActionDispatch::IntegrationTest
 
         assert_equal root_path, current_path
         assert page.has_content?("logged out")
+      end
+    end
+  end
+
+  context "password_reset" do
+    context "with a valid email" do
+      setup do
+        @user = users(:one)
+        @email = @user.email
+      end
+
+      should "be able to reset password" do
+        visit login_path
+        click_on "Forgot your password?"
+        fill_in "Email", with: @email
+        click_on "Reset your password"
+
+        assert_equal 1, unread_emails_for(@email).size
+        open_last_email_for(@email)
+        assert_must have_subject("Password reset for Question Box"), current_email
+        click_email_link_matching /reset/
+
+        fill_in "Password", with: "new_password"
+        fill_in "Password confirmation", with: "new_password"
+        click_on "Change your password"
+
+        assert page.has_content?("password has been changed")
+
+        assert_can_login(@user, "new_password")
       end
     end
   end

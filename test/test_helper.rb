@@ -7,9 +7,10 @@ require 'rails/test_help'
 require 'faker'
 require 'shoulda'
 require 'capybara/rails'
+require "email_spec"
 require_relative 'support/test_password_helper'
 
-Capybara.default_driver = :selenium
+Capybara.server_port = 31337
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
@@ -36,6 +37,9 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
+
+  include EmailSpec::Helpers
+  include EmailSpec::Matchers
 
   def login(user = users(:one), password = default_password)
     visit login_path

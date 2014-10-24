@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
 
   def home
     @question = Question.new
-    @recent_questions = Question.order(created_at: :desc).limit(5)
+    @unanswered_questions = Question.unanswered.order(created_at: :desc).limit(5)
+    @answered_questions = Question.recently_answered.limit(5)
   end
 
   def index

@@ -1,0 +1,11 @@
+<%= simple_form_for @password_reset, url: password_reset_path, wrapper: :inline do |form| %>
+  <div class="row">
+    <h2 class="large-9 large-offset-3 columns">Reset your password</h2>
+  </div>
+  <%= form.input :email, label_html: {class: "inline right"} %>
+  <div class="row">
+    <div class="large-9 large-offset-3 columns">
+      <%= form.button :submit, "Reset your password" %>
+    </div>
+  </div>
+<% end %>

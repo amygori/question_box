@@ -1,0 +1,13 @@
+<%= simple_form_for @user, url: change_password_path(@password_reset.key), wrapper: :inline do |form| %>
+  <div class="row">
+    <h2 class="large-9 large-offset-3 columns">Change your password</h2>
+  </div>
+  <%= form.input :password, label_html: {class: "inline right"} %>
+  <%= form.input :password_confirmation, label_html: {class: "inline right"} %>
+  <div class="row">
+    <div class="large-9 large-offset-3 columns">
+      <%= form.button :submit, "Change your password" %>
+    </div>
+  </div>
+
+<% end %>

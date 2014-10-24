@@ -9,3 +9,13 @@ two:
   title: MyString
   text: MyText
   user: chet
+
+unanswered:
+  title: MyString
+  text: MyText
+  user: chet
+
+answered:
+  title: MyString
+  text: MyText
+  user: chet
