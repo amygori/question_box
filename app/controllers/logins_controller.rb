@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class LoginsController < ApplicationController
   def show
     @login = Login.new

@@ -31,7 +31,7 @@ group :development, :test do
   gem "pry-rails"
   gem "quiet_assets"
   gem "rails_best_practices"
-  gem "rubocop"
+  gem "rubocop" 
   gem "selenium-webdriver"
   gem "shoulda"
 

@@ -4,4 +4,6 @@ class Comment < ActiveRecord::Base
 
   validates :user, presence: true
   validates :commentable, presence: true
+
+
 end

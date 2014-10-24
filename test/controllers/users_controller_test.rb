@@ -63,4 +63,4 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
   end
-end
+
