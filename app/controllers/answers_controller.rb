@@ -23,6 +23,14 @@ class AnswersController < ApplicationController
     end
   end
 
+  #refactor in Javascript
+  if @vote.save
+    #should have successful response
+    #should return some JS to update the page
+  else
+    #should return some different JS
+  end
+
   private
 
   def answer_params
