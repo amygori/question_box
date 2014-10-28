@@ -4,6 +4,6 @@
     <div>Answered by <%= answer.user.name %></div>
   </div>
   <div class="small-3 columns text-center">
-    <%= vote_panel(answer) %>
+    <%= vote_panel(answer) { |answer, value| vote_answer_path(answer, value: value) } %>
   </div>
 </div>

@@ -1,0 +1,2 @@
+$("#<%= dom_id(@voteable) %> .vote").replaceWith("<%= j render(@vote) %>");
+$("#<%= dom_id(@voteable) %>").effect("highlight", {}, 1500);

@@ -9,18 +9,21 @@ require 'rails/test_help'
 require 'faker'
 require 'shoulda'
 require 'capybara/rails'
+require 'capybara/poltergeist'
 require "email_spec"
 require_relative 'support/test_password_helper'
 
 Capybara.server_port = 31337
-Capybara.current_driver = :selenium #will open up in browser when running integration tests
+Capybara.current_driver = :poltergeist
+
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order. need to use db cleaner gem
   fixtures :all
-  self.use_transactional_fixtures: false
+  self.use_transactional_fixtures = false
+
 
   def logged_in_session
     { current_user_id: users(:one).id }

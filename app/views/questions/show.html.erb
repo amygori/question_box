@@ -1,5 +1,5 @@
 <div class="question">
-  <div class="row">
+  <div id="<%= dom_id(@question) %>" class="row">
     <div class="small-9 columns">
       <h1><%= @question.title %></h1>
 
@@ -21,14 +21,16 @@
     </h2>
   </div>
 
-  <%= render @answers %>
+  <div id="answers">
+    <%= render @answers %>
+  </div>
 
   <a name="your-answer"></a>
   <div class="row">
     <div class="small-9 columns">
       <h2>Add your answer</h2>
       <% if logged_in? %>
-        <%= simple_form_for [@question, @answer] do |form| %>
+        <%= simple_form_for [@question, @answer], remote: true do |form| %>
           <%= form.input :text, :label => false %>
           <%= form.button :submit, "Answer", class: "radius" %>
         <% end %>

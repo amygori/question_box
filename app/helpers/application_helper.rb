@@ -26,11 +26,11 @@ module ApplicationHelper
             end
           else
             out << content_tag(:div) do
-              link_to(fa_icon("thumbs-up 2x"), path.call(voteable, value: 1), method: :post, remote: true)+
-              link_to(fa_icon("thumbs-down 2x"), path.call(voteable, value: -1), method: :post, remote: true)
+              link_to(fa_icon("thumbs-up 2x"), path.call(voteable, value: 1), method: :post, remote: true, title: "upvote") +
+              link_to(fa_icon("thumbs-down 2x"), path.call(voteable, value: -1), method: :post, remote: true, title: "downvote")
             end
           end
-        end
+          end
       end.html_safe
     end
   end
