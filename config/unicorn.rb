@@ -10,8 +10,8 @@ before_fork do |server, worker|
   end
 
   defined?(ActiveRecord::Base) and
-      ActiveRecord::Base.connection.disconnect!
-end
+    ActiveRecord::Base.connection.disconnect!
+  end
 
 after_fork do |server, worker|
   Signal.trap 'TERM' do
@@ -19,5 +19,5 @@ after_fork do |server, worker|
   end
 
   defined?(ActiveRecord::Base) and
-      ActiveRecord::Base.establish_connection
+    ActiveRecord::Base.establish_connection
 end

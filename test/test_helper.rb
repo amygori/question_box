@@ -11,6 +11,7 @@ require "email_spec"
 require_relative 'support/test_password_helper'
 
 Capybara.server_port = 31337
+# Capybara.current_driver = :selenium
 
 class ActiveSupport::TestCase
   include TestPasswordHelper

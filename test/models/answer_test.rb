@@ -9,6 +9,27 @@ class AnswerTest < ActiveSupport::TestCase
   should belong_to(:question)
   should have_many(:votes)
 
+  context "Answer class" do
+    should "be able to get answers in order by number of votes and created at" do
+      Timecop.scale(3600) do
+        questions(:one).answers.delete_all
+        answer1 = Answer.create!(user: users(:one), question: questions(:one),
+                                 text: "answer1")
+        answer2 = Answer.create!(user: users(:two), question: questions(:one),
+                                 text: "answer2")
+        answer3 = Answer.create!(user: users(:one), question: questions(:one),
+                                 text: "answer3")
+        answer4 = Answer.create!(user: users(:one), question: questions(:one),
+                                 text: "answer4")
+        Vote.create!(voteable: answer2, user: users(:one), value: 1)
+        Vote.create!(voteable: answer3, user: users(:two), value: -1)
+
+        assert_equal [answer2, answer1, answer4, answer3],
+                     questions(:one).reload.answers.order_by_votes
+      end
+    end
+  end
+
   context "an answer" do
     should "only allow one chosen answer per question" do
       # In order to make sure only one answer can be chosen per question

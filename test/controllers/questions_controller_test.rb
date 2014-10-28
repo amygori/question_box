@@ -129,7 +129,7 @@ class QuestionsControllerTest < ActionController::TestCase
     context "when logged in" do
       context "with invalid data" do
         setup do
-          post :vote, { id: questions(:one), vote: { value: 0 } }, logged_in_session
+          post :vote, { id: questions(:one), value: 0 }, logged_in_session
         end
 
         should "instantiate an invalid vote object" do
@@ -143,7 +143,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
       context "with valid data" do
         setup do
-          post :vote, { id: questions(:one), vote: { value: 1 } }, logged_in_session
+          post :vote, { id: questions(:one), value: 1 }, logged_in_session
         end
 
         should "create a vote" do

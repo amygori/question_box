@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
+
 gem 'rails', '4.1.6'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -14,18 +15,25 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 
-gem "foundation-rails"
-gem "simple_form"
+
 gem "kaminari"
+gem "redcarpet"
+gem "simple_form"
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem "faker"
+
+# Assets
+gem "font-awesome-rails"
+gem 'jquery-ui-rails'
+gem "foundation-rails"
+
 
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "capybara"
   gem "email_spec"
-  gem "faker"
   gem "launchy"
   gem "minitest-matchers_vaccine"
   gem "pry-rails"
@@ -34,9 +42,7 @@ group :development, :test do
   gem "rubocop"
   gem "selenium-webdriver"
   gem "shoulda"
-
-
-
+  gem "timecop"
 end
 
 

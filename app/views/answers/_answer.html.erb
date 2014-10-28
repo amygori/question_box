@@ -1,0 +1,9 @@
+<div class="row answer" id="<%= answer.persisted? ? dom_id(answer) : "answer-new" %>">
+  <div class="small-9 columns">
+    <div><%= markdown(answer.text) %></div>
+    <div>Answered by <%= answer.user.name %></div>
+  </div>
+  <div class="small-3 columns text-center">
+    <%= vote_panel(answer) %>
+  </div>
+</div>

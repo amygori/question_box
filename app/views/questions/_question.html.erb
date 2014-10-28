@@ -3,6 +3,6 @@
     <%= link_to question.title, question %>
   </div>
   <div class="small-3 columns text-center">
-    <%= pluralize question.votes.count, "vote" %>
+    <%= pluralize question.votes.sum(:value), "vote" %>
   </div>
 </div>

@@ -15,9 +15,8 @@ class Question < ActiveRecord::Base
   scope :unanswered, -> { where("NOT EXISTS (SELECT null FROM answers where answers.question_id = questions.id)") }
   scope :recently_answered, -> do
     select("questions.*, MAX(answers.created_at) AS answered_at").
-    joins("LEFT OUTER JOIN answers ON answers.question_id = questions.id").
+    joins("INNER JOIN answers ON answers.question_id = questions.id").
     group("questions.id").
-    having("count(answers.id) > 0").
     order("answered_at DESC")
   end
 

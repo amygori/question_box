@@ -35,8 +35,10 @@ questions = Question.all
                  user:     other_users.sample)
 end
 
-30.times do
-  Vote.create!(voteable: questions.sample,
-               user:     other_users.sample,
-               value:    [1, 1, 1, 1, 1, -1].sample)
+answers = Answer.all
+
+50.times do
+  Vote.create(voteable: (questions + answers).sample,
+              user:     other_users.sample,
+              value:    [1, 1, 1, 1, 1, -1].sample)
 end

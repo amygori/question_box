@@ -3,6 +3,7 @@ class AnswersController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
+    @answers = @question.answers.order_by_votes
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
 
@@ -15,11 +16,22 @@ class AnswersController < ApplicationController
 
   def vote
     @answer = Answer.find(params[:id])
-    @vote = @answer.votes.build(user: current_user, value: params[:vote][:value])
-    if @vote.save
-      redirect_to @answer.question, success: "Your vote was recorded."
-    else
-      redirect_to @answer.question, error: "There was a problem saving your vote."
+    @vote = @answer.votes.build(user: current_user, value: params[:value])
+    respond_to do |format|
+      format.html do
+        if @vote.save
+          redirect_to @answer.question, success: "Your vote was recorded."
+        else
+          redirect_to @answer.question, error: "There was a problem saving your vote."
+        end
+      end
+      format.js do
+        if @vote.save
+          render :create, status: :created
+        else
+          render :create, status: :accepted
+        end
+      end
     end
   end
 

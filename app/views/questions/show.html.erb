@@ -1,2 +1,40 @@
-<div><%= @question.title %></div>
-<div><%= @question.text %></div>
+<div class="question">
+  <div class="row">
+    <div class="small-9 columns">
+      <h1><%= @question.title %></h1>
+
+      <div>
+        <%= markdown(@question.text) %>
+      </div>
+      <div>
+        Asked by <%= @question.user.name %>
+      </div>
+    </div>
+    <div class="small-3 columns text-center">
+      <%= vote_panel(@question) %>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <h2 class="small-12 columns">
+      <%= pluralize(@question.answers.count, "answer") %>
+    </h2>
+  </div>
+
+  <%= render @answers %>
+
+  <a name="your-answer"></a>
+  <div class="row">
+    <div class="small-9 columns">
+      <h2>Add your answer</h2>
+      <% if logged_in? %>
+        <%= simple_form_for [@question, @answer] do |form| %>
+          <%= form.input :text, :label => false %>
+          <%= form.button :submit, "Answer", class: "radius" %>
+        <% end %>
+      <% else %>
+        <p><%= link_to "Log in to answer", login_path %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
