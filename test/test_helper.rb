@@ -1,5 +1,7 @@
 require 'simplecov'
 SimpleCov.start 'rails'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -11,13 +13,14 @@ require "email_spec"
 require_relative 'support/test_password_helper'
 
 Capybara.server_port = 31337
-# Capybara.current_driver = :selenium
+Capybara.current_driver = :selenium #will open up in browser when running integration tests
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order. need to use db cleaner gem
   fixtures :all
+  self.use_transactional_fixtures: false
 
   def logged_in_session
     { current_user_id: users(:one).id }
