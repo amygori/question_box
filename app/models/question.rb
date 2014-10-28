@@ -35,4 +35,27 @@ class Question < ActiveRecord::Base
   def score
     votes.sum(:value)
   end
+
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).questions
+  end
+
+  def self.tag_counts
+    Tag.select("tags.*, count(questions_tags.tag_id) as count").
+        joins(:questions).group("tags.id").order("count(questions_tags.tag_id) DESC")
+  end
+
+  def tag_names
+    tags.map(&:name)
+  end
+
+  def tag_list
+    tag_names.join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 end

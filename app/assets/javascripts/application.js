@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/effect-highlight
+//= require jquery.tagsinput
 //= require foundation
 //= require turbolinks
 //= require_tree .
