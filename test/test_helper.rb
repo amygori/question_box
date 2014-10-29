@@ -12,6 +12,7 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 require "email_spec"
 require_relative 'support/test_password_helper'
+require 'pry-rescue/minitest' if ENV['DEBUG']
 
 Capybara.server_port = 31337
 Capybara.current_driver = :poltergeist

@@ -38,6 +38,7 @@ group :development, :test do
   gem "minitest-matchers_vaccine"
   gem "poltergeist"
   gem "pry-rails"
+  gem "pry-rescue"
   gem "quiet_assets"
   gem "rails_best_practices"
   gem "rubocop"
