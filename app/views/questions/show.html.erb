@@ -1,7 +1,7 @@
 <div class="question">
   <div id="<%= dom_id(@question) %>" class="row">
     <div class="small-9 columns">
-      <h1><%= @question.title %></h1>
+      <h1 class="question-title"><%= @question.title %></h1>
 
       <div>
         <%= markdown(@question.text) %>
@@ -15,6 +15,16 @@
     </div>
   </div>
   <hr/>
+
+  <div id="bing-links" class="row">
+    <div class="small-12 columns">
+      <h2>Links from Bing</h2>
+      <div class="results">
+        Loading...
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <h2 class="small-12 columns">
       <%= pluralize(@question.answers.count, "answer") %>

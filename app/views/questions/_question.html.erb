@@ -1,8 +1,14 @@
-<div class="row">
-  <div class="small-9 columns">
-    <%= link_to question.title, question %>
+<div class="row question">
+  <div class="small-8 columns">
+    <h4><%= link_to question.title, question %></h4>
+    <p>Asked by <%= question.user.name %></p>
   </div>
-  <div class="small-3 columns text-center">
-    <%= pluralize question.votes.sum(:value), "vote" %>
+  <div class="small-2 columns text-center counter">
+    <div class="count"><%= question.score %></div>
+    <div>score</div>
+  </div>
+  <div class="small-2 columns text-center counter">
+    <div class="count"><%= question.answers.count %></div>
+    <div><%= question.answers.count == 1 ? "answer" : "answers" %></div>
   </div>
 </div>

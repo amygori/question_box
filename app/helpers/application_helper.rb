@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def body_classes
+    [controller.controller_name,
+     "#{controller.controller_name}-#{controller.action_name}"].join(" ")
+  end
+
   def markdown(text)
     return if text.nil?
     @renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new,
@@ -10,9 +15,9 @@ module ApplicationHelper
   def vote_panel(voteable)
     path = method("vote_#{voteable.class.to_s.underscore}_path")
     existing_vote = voteable.votes.find_by(user: current_user)
-    content_tag(:div, class: :vote) do
+    content_tag(:div, class: ["vote", "counter"]) do
       String.new.tap do |out|
-        out << content_tag(:div, class: "vote-count") do
+        out << content_tag(:div, class: "count") do
           voteable.votes.sum(:value).to_s
         end
         unless voteable.respond_to?(:user) && voteable.user == current_user

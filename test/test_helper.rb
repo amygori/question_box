@@ -17,6 +17,11 @@ require 'pry-rescue/minitest' if ENV['DEBUG']
 Capybara.server_port = 31337
 Capybara.current_driver = :poltergeist
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'test/vcr_cassettes'
+  c.hook_into :webmock
+end
+
 
 class ActiveSupport::TestCase
   include TestPasswordHelper
