@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+before_action :authenticate, only: [:edit, :update]
+before_action :set_user, except: [:create, :new]
+
   def new
     @user = User.new
   end
@@ -18,5 +21,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def set_user
+    @user = current_user
   end
 end
