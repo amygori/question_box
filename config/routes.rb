@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resource :login, :only => [:show, :create, :destroy]
 
-  resources :users, :only => [:new, :create]
+  resources :users, :only => [:new, :create, :update, :show]
 
   resources :questions, :only => [:index, :new, :create, :show] do
 
@@ -16,10 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'password_reset' => 'password_resets#new', as: :password_reset
-  post 'password_reset' => 'password_resets#create'
-  get 'password_reset/:id' => 'password_resets#edit', as: :change_password
-  patch 'password_reset/:id' => 'password_resets#update'
+  patch 'users/:id'           => 'user#update', as: 'update'
+  get   'password_reset'      => 'password_resets#new', as: :password_reset
+  post  'password_reset'      => 'password_resets#create'
+  get   'password_reset/:id'  => 'password_resets#edit', as: :change_password
+  patch 'password_reset/:id'  => 'password_resets#update'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
