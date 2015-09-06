@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.4'
 
 
 gem 'rails', '4.1.6'
@@ -41,7 +41,6 @@ group :development, :test do
   gem "pry-rescue"
   gem "quiet_assets"
   gem "rails_best_practices"
-  gem "rubocop"
   gem "shoulda"
   gem "timecop"
 end
