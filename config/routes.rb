@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'proxy/bing.json' => "bing_proxy#get"
 
-  resource :login, :only => [:show, :create, :destroy]
+  resource :login, :only => [:new, :show, :create, :destroy]
 
   resources :users, :only => [:new, :create, :update, :show]
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post  'password_reset'      => 'password_resets#create'
   get   'password_reset/:id'  => 'password_resets#edit', as: :change_password
   patch 'password_reset/:id'  => 'password_resets#update'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
