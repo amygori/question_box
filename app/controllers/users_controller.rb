@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_action :authenticate, only: [:edit, :update]
-before_action :set_user, except: [:create, :new]
+before_action :set_user
 
   def new
     @user = User.new
@@ -15,6 +15,15 @@ before_action :set_user, except: [:create, :new]
     else
       render :new
     end
+  end
+
+  def edit
+
+  end
+
+  def show
+    @questions = Question.order(created_at: :desc).page params[:page]
+    @user = current_user
   end
 
   private
