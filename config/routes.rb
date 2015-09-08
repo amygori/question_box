@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'proxy/bing.json' => "bing_proxy#get"
 
-  resource :login, :only => [:new, :show, :create, :destroy]
+  resource :login
 
   resources :users, :only => [:new, :create, :update, :show]
 

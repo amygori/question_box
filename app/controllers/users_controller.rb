@@ -6,6 +6,15 @@ before_action :set_user
     @user = User.new
   end
 
+  def index
+    @user = @current_user
+  end
+
+  # def show
+  #   @questions = Question.order(created_at: :desc).page params[:page]
+  #   @user = User.new
+  # end
+
   def create
     @user = User.new(user_params)
 

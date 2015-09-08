@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    return unless session[:user_id]
-    @current_user ||= User.find_by_id(session[:user_id])
+    #return unless session[:user_id]
+    @current_user ||= User.find_by_id(session[:current_user_id])
   end
 
   def logged_in?
-    current_user.is_a? User
+    !!current_user
   end
 
   def authenticate

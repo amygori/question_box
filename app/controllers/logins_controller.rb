@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class LoginsController < ApplicationController
   def show
     @login = Login.new
@@ -9,7 +7,7 @@ class LoginsController < ApplicationController
     @login = Login.new(login_params)
 
     if @login.valid? && @login.authenticated?
-      session[:current_user_id] = @login.user.id
+      session[:user_id] = @login.user.id
       redirect_to root_path, success: "You are successfully logged in."
     else
       render :show
@@ -17,7 +15,7 @@ class LoginsController < ApplicationController
   end
 
   def destroy
-    session[:current_user_id] = nil
+    session[:user_id] = nil
     redirect_to root_path, success: "You are successfully logged out."
   end
 
